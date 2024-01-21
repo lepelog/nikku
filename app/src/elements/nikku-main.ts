@@ -171,6 +171,13 @@ export class NikkuMain extends LitElement {
 
       readFile(file).then(this.#handleFileSelected.bind(this));
     });
+
+    const url = new URL(window.location.href);
+    const inputUrl = url.searchParams.get('input');
+
+    if (inputUrl) {
+      this.#handleExternalUrlInput(inputUrl);
+    }
   }
 
   #showError(error: Error) {
@@ -191,20 +198,31 @@ export class NikkuMain extends LitElement {
     readFile(file).then(this.#handleFileSelected.bind(this));
   }
 
+  async #handleExternalUrlInput(url: string) {
+    const resp = await fetch(url);
+    const parts = url.split('/');
+    const lastPart = parts[parts.length-1];
+    const data = await resp.arrayBuffer();
+    this.#handleFileSelected({
+      buffer: data,
+      fileName: lastPart,
+    })
+  }
+
   async #handleFileSelected({
     buffer,
-    file,
+    fileName,
   }: {
     buffer: string | ArrayBuffer | null;
-    file: File;
+    fileName: string;
   }) {
     this.#clearError();
 
     if (!buffer || !(buffer instanceof ArrayBuffer)) {
       return;
     }
-    if (file.name) {
-      this.trackTitle = file.name;
+    if (fileName) {
+      this.trackTitle = fileName;
     }
 
     try {
@@ -493,14 +511,14 @@ export class NikkuMain extends LitElement {
 
 function readFile(
   file: File
-): Promise<{ buffer: string | ArrayBuffer | null; file: File }> {
+): Promise<{ buffer: string | ArrayBuffer | null; fileName: string }> {
   return new Promise((resolve) => {
     const fileReader = new FileReader();
     fileReader.addEventListener('loadend', (_ev) => {
       const buffer = fileReader.result;
       resolve({
         buffer,
-        file,
+        fileName: file.name,
       });
     });
     fileReader.readAsArrayBuffer(file);
