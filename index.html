@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Nikku - Web-based BRSTM player</title>
+
+    <meta name="description" content="👽 Web-based BRSTM player." />
+
+    
+    <link rel="icon" type="image/svg+xml" href="/nikku/assets/logo-99fd8201.svg" />
+    <link rel="mask-icon" href="/nikku/assets/logo-99fd8201.svg" color="#198813" />
+    <link rel="apple-touch-icon" href="./assets/ios-180.png" sizes="180x180" />
+    <meta name="theme-color" content="#198813" />
+    <meta name="color-scheme" content="light dark" />
+
+    <link rel="canonical" href="https://kenrick95.github.io/nikku/" />
+    <meta
+      name="twitter:image:src"
+      content="https://repository-images.githubusercontent.com/178887944/ac571a80-ba7d-11eb-80b1-b5bd62413448"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nikku" />
+    <meta name="twitter:description" content="👽 Web-based BRSTM player." />
+    <meta
+      property="og:image"
+      content="https://repository-images.githubusercontent.com/178887944/ac571a80-ba7d-11eb-80b1-b5bd62413448"
+    />
+    <meta property="og:title" content="Nikku" />
+    <meta property="og:description" content="👽 Web-based BRSTM player." />
+    <meta property="og:url" content="https://kenrick95.github.io/nikku/" />
+
+    <script>
+      if (
+        (function () {
+          try {
+            eval(
+              '(async () => { class Something { constructor() { this.there = { number: 42 }; } async hello() { let value = this.there?.number ?? `100`; return value; } } await new Something().hello();})();'
+            );
+          } catch (e) {
+            return true;
+          }
+
+          if (!window.customElements) {
+            return true;
+          }
+          if (!('AudioContext' in window)) {
+            return true;
+          }
+
+          if (!('AudioWorkletNode' in window)) {
+            return true;
+          }
+
+          return false;
+        })()
+      ) {
+        document.addEventListener('DOMContentLoaded', function () {
+          document.getElementById('unsupported').style.display = 'block';
+          document.getElementById('main').style.display = 'none';
+        });
+      }
+    </script>
+    <script type="module" crossorigin src="/nikku/assets/index-9333369a.js"></script>
+    <link rel="stylesheet" href="/nikku/assets/index-92ce6ccb.css">
+  <link rel="manifest" href="/nikku/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/nikku/registerSW.js"></script></head>
+  <body>
+    <header id="header">
+      <img
+        id="logo"
+        src="/nikku/assets/logo-full-935138e4.svg"
+        alt="Nikku logo"
+        width="147"
+        height="50"
+      />
+      <span id="subtitle">Web-based <nikku-help>BRSTM</nikku-help> player</span>
+    </header>
+
+    <div id="unsupported" class="error">Sorry, this browser is unsupported</div>
+    <nikku-main></nikku-main>
+    <footer id="footer">
+      By
+      <a href="https://github.com/kenrick95" tabindex="0" target="_blank"
+        >Kenrick</a
+      >
+      <br />
+      Source code at
+      <a href="https://github.com/kenrick95/nikku" tabindex="0" target="_blank"
+        >GitHub</a
+      >
+    </footer>
+
+    
+  </body>
+</html>
